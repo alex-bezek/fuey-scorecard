@@ -1,0 +1,26 @@
+{
+  "name": "fuey-scorecard",
+  "version": "1.0.0",
+  "description": "single page app scorecard for fuey",
+  "main": "index.js",
+  "repository": "https://github.com/alex-bezek/fuey-scorecard",
+  "author": "Alex Bezek",
+  "license": "MIT",
+  "dependencies":{
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.4.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "jsx-loader": "^0.13.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "scripts":{
+    "webpack": "webpack",
+    "server": "webpack-dev-server --host=0.0.0.0 --colors --port 8080 --hot --inline"
+  }
+}
