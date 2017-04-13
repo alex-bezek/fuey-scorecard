@@ -4,8 +4,8 @@ const propTypes = {
   roundNumber: React.PropTypes.number.isRequired,
   playerNumber: React.PropTypes.number.isRequired,
   previousRoundScore: React.PropTypes.number.isRequired,
-  currentPhase: React.PropTypes.oneOf(['bidding', 'taking', 'edit', 'done']).isRequired
-  // TODO: callback for when calculateScore happens for calling back to game and changing state
+  currentPhase: React.PropTypes.oneOf(['bidding', 'taking', 'edit', 'done']).isRequired,
+  scoreChangeCallback: React.PropTypes.func
 };
 
 

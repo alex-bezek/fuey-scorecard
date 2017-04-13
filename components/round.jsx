@@ -4,7 +4,8 @@ import Turn from './turn.jsx'
 const propTypes = {
   roundNumber: React.PropTypes.number.isRequired,
   previousRoundScores: React.PropTypes.array.isRequired,
-  currentPhase: React.PropTypes.oneOf(['bidding', 'taking', 'edit', 'done']).isRequired
+  currentPhase: React.PropTypes.oneOf(['bidding', 'taking', 'edit', 'done']).isRequired,
+  scoreChangeCallback: React.PropTypes.func
 };
 
 // React representation of a full round
