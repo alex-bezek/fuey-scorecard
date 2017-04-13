@@ -25,11 +25,11 @@ class Turn extends React.Component {
   }
 
   setBid(event){
-    this.setState({bid: parseInt(event.target.value)}, () => { this.setScore() });
+    this.setState({bid: parseInt(event.target.value)}, () => { this.setScore(); });
   }
 
   setTaken(event){
-    this.setState({taken: parseInt(event.target.value)}, () => { this.setScore() });
+    this.setState({taken: parseInt(event.target.value)}, () => { this.setScore(); });
   }
 
   setScore(){
@@ -76,7 +76,7 @@ class Turn extends React.Component {
             type="number"
             name="bid"
             min="0"
-            disabled={!["edit", "bidding"].includes(this.props.currentPhase)}
+            disabled={!['edit', 'bidding'].includes(this.props.currentPhase)}
             max={this.props.roundNumber}
             value={this.state.bid == null ? '' : this.state.bid}
             onChange={this.setBid}
@@ -87,14 +87,14 @@ class Turn extends React.Component {
           type="number"
           name="taken"
           min="0"
-          disabled={!["edit","taking"].includes(this.props.currentPhase)}
+          disabled={!['edit','taking'].includes(this.props.currentPhase)}
           max={this.props.roundNumber}
           value={this.state.taken == null ? '' : this.state.taken} onChange={this.setTaken}
         />
         </div>
         <div>{this.state.score}</div>
       </td>
-    )
+    );
   }
 }
 

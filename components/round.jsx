@@ -1,5 +1,5 @@
 import React, { PropTypes }  from 'react';
-import Turn from './turn.jsx'
+import Turn from './turn.jsx';
 
 const propTypes = {
   roundNumber: React.PropTypes.number.isRequired,
@@ -21,7 +21,7 @@ class Round extends React.Component {
       return null;
     }
     return (
-      <tr key={"round_tr_" + this.props.roundNumber}>
+      <tr key={'round_tr_' + this.props.roundNumber}>
         <th>
           Round: {this.props.roundNumber}
         </th>
@@ -29,18 +29,18 @@ class Round extends React.Component {
           this.props.previousRoundScores.map((previousRoundScore, index) => {
             return(
               <Turn
-                key={"turn_" + index}
+                key={'turn_' + index}
                 roundNumber={this.props.roundNumber}
                 playerNumber={index}
                 previousRoundScore={previousRoundScore}
                 currentPhase={this.props.currentPhase}
                 scoreChangeCallback={this.props.scoreChangeCallback}
               />
-            )
+            );
           })
         }
       </tr>
-    )
+    );
   }
 }
 
