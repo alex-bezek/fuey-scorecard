@@ -1,4 +1,4 @@
-import React, { PropTypes }  from 'react';
+import React  from 'react';
 
 const propTypes = {
   roundNumber: React.PropTypes.number.isRequired,
@@ -7,8 +7,6 @@ const propTypes = {
   currentPhase: React.PropTypes.oneOf(['bidding', 'taking', 'edit', 'done']).isRequired,
   scoreChangeCallback: React.PropTypes.func
 };
-
-
 
 // React representation a single players turn of a round
 class Turn extends React.Component {
@@ -22,6 +20,11 @@ class Turn extends React.Component {
     this.setScore = this.setScore.bind(this);
     this.setBid = this.setBid.bind(this);
     this.setTaken = this.setTaken.bind(this);
+
+    // TODO: FIgure out how to do this on prop change. This the constructor isn't triggered
+    if(this.props.currentPhase === 'taking' && this.state.bid === null){
+      this.setState({bid: 0});
+    }
   }
 
   setBid(event){
@@ -46,7 +49,11 @@ class Turn extends React.Component {
     let bid = this.state.bid;
     let taken = this.state.taken;
     let previousRoundScore = this.props.previousRoundScore;
-    if(bid === null || taken === null){
+    if(bid === null) {
+      this.setState({bid: 0});
+    }
+
+    if(taken === null){
       return null;
     }
     // They bid fuey
@@ -67,7 +74,12 @@ class Turn extends React.Component {
     }
   }
 
+  done(){
+    !['edit', 'bidding'].includes(this.props.currentPhase);
+  }
+
   render() {
+
     // TODO: Make taken/bid field display as empty if null AND allow 0 to be entered
     return (
       <td>
@@ -76,9 +88,9 @@ class Turn extends React.Component {
             type="number"
             name="bid"
             min="0"
-            disabled={!['edit', 'bidding'].includes(this.props.currentPhase)}
+            disabled={['edit','taking'].includes(this.props.currentPhase)}
             max={this.props.roundNumber}
-            value={this.state.bid == null ? '' : this.state.bid}
+            value={this.state.bid == null ? '' : this.state.bid }
             onChange={this.setBid}
           />
         </div>
@@ -89,7 +101,8 @@ class Turn extends React.Component {
           min="0"
           disabled={!['edit','taking'].includes(this.props.currentPhase)}
           max={this.props.roundNumber}
-          value={this.state.taken == null ? '' : this.state.taken} onChange={this.setTaken}
+          value={this.state.taken == null ? '' : this.state.taken}
+          onChange={this.setTaken}
         />
         </div>
         <div>{this.state.score}</div>
